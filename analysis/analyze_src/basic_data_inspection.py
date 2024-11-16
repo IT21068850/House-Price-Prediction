@@ -61,21 +61,21 @@ class DataInspector:
         """
         self._strategy =  strategy
         
-        def set_strategy(self, strategy: DataInspectionStrategy):
-            """
+    def set_strategy(self, strategy: DataInspectionStrategy):
+        """
             Purpose:
             Parameters:
             Returns:
             
-            """
-            self._strategy = strategy
+        """
+        self._strategy = strategy
 
-        def execute_inspection(self, df: pd.DataFrame):
-            """
+    def execute_inspection(self, df: pd.DataFrame):
+        """
             Purpose: executes the inspection using the current strategy
             Parameters:Dataframe
             Returns:none (executes the strategies inspection method)
-            """
-            self._strategy.inspect(df)
+        """
+        self._strategy.inspect(df)
 
 
