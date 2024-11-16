@@ -47,13 +47,15 @@ class ZipDataIngestor(DataIngestor):
         
         if file_path.endswith(".csv"):
             df=pd.read_csv(file_path)
+            return df
         elif file_path.endswith(".json"):
             df=pd.read_json
+            return df
         elif file_path.endswith(".xlsx"):
             df=pd.read_excel
+            return df
         
-        #Return the Dataframe
-        return df
+        
 
 #Implement a concrete class for JSON file ingestion 
 class JSONDataIngestor(DataIngestor):
@@ -115,5 +117,17 @@ class DataIngestorFactory:
 
 if __name__== "__main__":
 
+    file_path = 'C:/Users/yusri/Documents/Data Science Project/House Price Prediction/HousePricePrediction/data/archive.zip'
 
-  pass  
+    #Determine the file extension 
+    file_extension = os.path.splitext(file_path)[1]
+
+    #Get the appropriate Data Ingestor
+    data_ingestor = DataIngestorFactory.get_data_ingestor(file_extension)
+
+    #Ingest the data and load it into the Dataframe 
+    df = data_ingestor.ingest(file_path)
+
+    #Display Dataframe
+    print(df)
+
