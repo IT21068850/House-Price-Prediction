@@ -48,7 +48,8 @@ class SummaryStatisticsInspectionStrategy(DataInspectionStrategy):
         print("\Summary Statistics (Numerical Features): ")
         print(df.describe())
         print("\Summary Statistics (Categorical Features): ")
-        print(df.describe(include=["0"]))
+        print(df.describe(include=["object", "category"]))
+
 
 
 #This allows you to switch between different data inpsection strategies
