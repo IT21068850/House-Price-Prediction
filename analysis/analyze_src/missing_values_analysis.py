@@ -37,4 +37,31 @@ class MissingValueAnalysisTemplate(ABC):
             """
             pass
 
-        
+
+#concrete class for missing value identification.
+class SimpleMissingValueAnalysis(MissingValueAnalysisTemplate):
+    def identify_missing_values(self, df: pd.DataFrame):
+        """
+        Purpose: missing value analysis
+        Parameter: Dataframe
+        Returns: none. prints missing value 
+        """
+        print("\nMissing Values Count by Column: ")
+        missing_values = df.isnull().sum()
+        print(missing_values[missing_values>0])
+
+    def visualize_missing_values(self, df:pd.DataFrame):
+        """
+         Purpose: visualizes missging values using heat maps
+        Parameter: The Dataframe to be visualized
+        Returns: none. displays heatmap
+
+        """
+        print("\nVisualizing Missing Values..")
+        plt.figure(figsize=(12,8))
+        sns.heatmap(df.isnull(),cbar=False, cmap="viridis")
+        plt.title("Missing Values Heatmap")
+        plt.show()
+
+if __name__ == "__main__":
+    pass
